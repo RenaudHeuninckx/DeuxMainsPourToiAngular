@@ -1,0 +1,20 @@
+export class Utilisateur{
+  public id: number;
+  public nom: string;
+  public prenom: string;
+  public pseudo: string;
+  public email: string;
+  public password: string;
+  public tel: string;
+  public gsm: string;
+  public rue: string;
+  public num: string;
+  public boite: string;
+  public cp: string;
+  public loc: string;
+  public complAdr: string;
+  public dateNaiss: Date;
+  public admin: boolean;
+  public inscrit: Date;
+  public supprime: Date;
+}
