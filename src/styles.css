@@ -1,2 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap-icons/font/bootstrap-icons.css";
+
+
+.nav-bg {
+  background-color: #FFECB3;
+}
+
+.global-bg{
+  background-color: #FFF8E1;
+}
+
+.space-at-end{
+padding-bottom: 10px;
+}
+
+.footer-bg {
+  background-color: #FFECB3;
+}
+
+.text-black {
+  color: black;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+}

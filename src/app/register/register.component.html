@@ -1,24 +1,25 @@
 <div>
   <h1>Enregistrement</h1>
   <p>Vous avez déjà de compte ? <a routerLink="../login">Connectez-vous ici.</a></p>
+  <p>* champs requis</p>
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <div class="form-row">
       <div class="form-group col-12 col-sm-6">
-        <label>Nom</label>
-        <input type="text" (change)="createPseudo()" class="form-control" formControlName="nom" [ngClass]="{ 'is-invalid': submitted && f.nom.errors }">
-        <div *ngIf="submitted && f.nom.errors" class="invalid-feedback">
-          <div *ngIf="f.nom.errors.required">Nom requis</div>
-        </div>
-      </div>
-      <div class="form-group col-12 col-sm-6">
-        <label>Prénom</label>
+        <label>Prénom*</label>
         <input type="text" (change)="createPseudo()" class="form-control" formControlName="prenom" [ngClass]="{ 'is-invalid': submitted && f.prenom.errors }">
         <div *ngIf="submitted && f.prenom.errors" class="invalid-feedback">
           <div *ngIf="f.prenom.errors.required">Prénom requis</div>
         </div>
       </div>
+      <div class="form-group col-12 col-sm-6">
+        <label>Nom*</label>
+        <input type="text" (change)="createPseudo()" class="form-control" formControlName="nom" [ngClass]="{ 'is-invalid': submitted && f.nom.errors }">
+        <div *ngIf="submitted && f.nom.errors" class="invalid-feedback">
+          <div *ngIf="f.nom.errors.required">Nom requis</div>
+        </div>
+      </div>
       <div class="form-group col-12">
-        <label>Pseudo</label>
+        <label>Pseudo*</label>
         <input type="text" id="pseudo" class="form-control" formControlName="pseudo" aria-describedby="pseudoInfo" [ngClass]="{ 'is-invalid': submitted && f.pseudo.errors }">
         <div *ngIf="submitted && f.pseudo.errors" class="invalid-feedback">
           <div *ngIf="f.pseudo.errors.required">Pseudo requis</div>
@@ -26,17 +27,32 @@
         <div id="pseudoInfo" class="form-text">Identifiant utilisé pour vos commentaires. Vos données personelle ne sont jamais affichées.</div>
       </div>
       <div class="form-group col-12">
-        <label>Adresse email</label>
-        <input type="email" class="form-control" formControlName="email">
+        <label>Adresse email*</label>
+        <input type="email" class="form-control" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+          <div *ngIf="f.email.errors.required">Email requis</div>
+          <div *ngIf="f.email.errors.email">Veuillez saisir un email valide</div>
+        </div>
       </div>
       <div class="form-group col-12 col-sm-4">
-        <label>Mot de passe</label>
-        <input type="password" class="form-control" formControlName="password">
+        <label>Mot de passe*</label>
+        <input type="password" class="form-control" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+          <div *ngIf="f.password.errors.required">Mot de passe requis</div>
+          <div *ngIf="f.password.errors.hasUpperCase">Doit contenir au moins une majuscule</div>
+          <div *ngIf="f.password.errors.hasLowerCase">Doit contenir au moins une minuscule</div>
+          <div *ngIf="f.password.errors.hasDigit">Doit contenir au moins un chiffre</div>
+          <div *ngIf="f.password.errors.hasSpecChar">Doit contenir au moins un !@#&()$</div>
+        </div>
       </div>
       <div class="form-group col-8 d-none d-sm-block"></div>
       <div class="form-group col-12 col-sm-4">
-        <label>Confirmation</label>
-        <input type="password" class="form-control" formControlName="confPassword">
+        <label>Confirmation*</label>
+        <input type="password" class="form-control" formControlName="confPassword" [ngClass]="{ 'is-invalid': submitted && f.confPassword.errors }">
+        <div *ngIf="submitted && f.confPassword.errors" class="invalid-feedback">
+          <div *ngIf="f.confPassword.errors.required">Confirmation de mot de passe requise</div>
+          <div *ngIf="f.confPassword.errors.mustMatch">La confirmation ne correspond pas au mot de passe</div>
+        </div>
       </div>
       <div class="form-group col-8 d-none d-sm-block"></div>
       <div class="form-group col-12 col-sm-4">
@@ -47,25 +63,30 @@
         <label>Mobile</label>
         <input type="text" class="form-control" formControlName="mob">
       </div>
-      <div class="form-group col-12 col-sm-9 ">
-        <label>Rue</label>
-        <input type="text" class="form-control" formControlName="rue">
+      <div class="form-group col-12">
+        <label>Adresse*</label>
+        <input type="text" class="form-control" formControlName="adresse" autocomplete="shipping street-address" [ngClass]="{ 'is-invalid': submitted && f.rue.errors }">
+        <div *ngIf="submitted && f.rue.errors" class="invalid-feedback">
+          <div *ngIf="f.rue.errors.required">Rue requise</div>
+        </div>
       </div>
       <div class="form-group col-12 col-sm-3">
-        <label>Numéro</label>
-        <input type="text" class="form-control" formControlName="num">
-      </div>
-      <div class="form-group col-12 col-sm-3">
-        <label>Code postal</label>
-        <input type="text" class="form-control" formControlName="cp">
+        <label>Code postal*</label>
+        <input type="text" class="form-control" formControlName="cp" [ngClass]="{ 'is-invalid': submitted && f.cp.errors }">
+        <div *ngIf="submitted && f.cp.errors" class="invalid-feedback">
+          <div *ngIf="f.cp.errors.required">Code postal requis</div>
+        </div>
       </div>
       <div class="form-group col-12 col-sm-9">
-        <label>Localité</label>
-        <input type="text" class="form-control" formControlName="loc">
+        <label>Localité*</label>
+        <input type="text" class="form-control" formControlName="loc" autocomplete="shipping address-level2" [ngClass]="{ 'is-invalid': submitted && f.loc.errors }">
+        <div *ngIf="submitted && f.loc.errors" class="invalid-feedback">
+          <div *ngIf="f.loc.errors.required">Localité requise</div>
+        </div>
       </div>
       <div class="form-group  col-12">
         <label>Complément d'adresse</label>
-        <input type="text" class="form-control" formControlName="complAdr">
+        <input type="text" class="form-control" formControlName="complAdr" autocomplete=none>
       </div>
       <div class="form-group">
         <label>Date de naissance</label>

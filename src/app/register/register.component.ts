@@ -1,4 +1,4 @@
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { MustMatch } from '../service/mustMatch';
 
@@ -22,12 +22,11 @@ export class RegisterComponent implements OnInit {
       prenom: ['',Validators.required],
       pseudo: ['',Validators.required],
       email: ['',[Validators.required,Validators.email]],
-      password: ['',[Validators.required,Validators.minLength(8)]],
+      password: ['',[Validators.required,Validators.minLength(8), this.hasUpperCase, this.hasLowerCase, this.hasDigit, this.hasSpecialChar]],
       confPassword: ['',Validators.required],
       tel: [''],
       mob: [''],
-      rue: ['',Validators.required],
-      num: [''],
+      adresse: ['',Validators.required],
       cp: ['',Validators.required],
       loc: ['',Validators.required],
       complAdr: [''],
@@ -42,7 +41,6 @@ export class RegisterComponent implements OnInit {
   onSubmit(){
     this.submitted = true;
     if(this.registerForm.invalid){
-      alert('Pas bon');
       return;
     }
     this.submitted = true;
@@ -56,10 +54,47 @@ export class RegisterComponent implements OnInit {
   }
 
   createPseudo(){
-    this.nomPseudo = this.registerForm.value['nom'];
-    this.prenomPseudo = this.registerForm.value['prenom'];
-    this.pseudoOk = this.nomPseudo + this.prenomPseudo;
-    console.log(this.pseudoOk);
-    document.getElementById("pseudo").value = this.pseudoOk;
+    this.nomPseudo =
+    this.prenomPseudo =
+    this.pseudoOk = this.registerForm.value['prenom'] + " " + this.registerForm.value['nom'];
+    this.registerForm.patchValue({pseudo: this.pseudoOk});
   }
+
+  hasUpperCase(control: FormControl){
+    var upperLetter = /[A-Z]/g;
+    return upperLetter.test(control.value) ? null : {
+      hasUpperCase: {
+        valid: false
+      }
+    }
+  }
+
+  hasLowerCase(control: FormControl){
+    var lowerLetter = /[a-z]/g;
+    return lowerLetter.test(control.value) ? null : {
+      hasLowerCase: {
+        valid: false
+      }
+    }
+  }
+
+  hasDigit(control: FormControl){
+    var digit = /[0-9]/g
+    return digit.test(control.value) ? null : {
+      hasDigit: {
+        valid: false
+      }
+    }
+  }
+
+  hasSpecialChar(control: FormControl){
+    var specChar = /[!@#&()$]/g;
+    return specChar.test(control.value) ? null : {
+      hasSpecChar: {
+        valid: false
+      }
+    }
+  }
+
+
 }
