@@ -1,6 +1,9 @@
+import { RegisterService } from './../service/register.service';
+import { Utilisateur } from './../models/Utilisateur.model';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { MustMatch } from '../service/mustMatch';
+
 
 @Component({
   selector: 'app-register',
@@ -10,13 +13,16 @@ import { MustMatch } from '../service/mustMatch';
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   submitted = false;
-  nomPseudo: string;
-  prenomPseudo: string;
   pseudoOk: string;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,
+              private registerService: RegisterService) { }
 
   ngOnInit() {
+    this.initForm();
+  }
+
+  initForm(){
     this.registerForm = this.formBuilder.group({
       nom: ['',Validators.required],
       prenom: ['',Validators.required],
@@ -43,19 +49,32 @@ export class RegisterComponent implements OnInit {
     if(this.registerForm.invalid){
       return;
     }
-    this.submitted = true;
-
-    alert('OK \n\n' + JSON.stringify(this.registerForm.value, null, 4));
+    const formValue = this.registerForm.value;
+    let toCreate = new Utilisateur();
+    toCreate.nom = formValue['nom'];
+    toCreate.prenom = formValue['prenom'];
+    toCreate.pseudo = formValue['pseudo'];
+    toCreate.email = formValue['email'];
+    toCreate.password = formValue['password'];
+    toCreate.tel = formValue['tel'];
+    toCreate.gsm = formValue['gsm'];
+    toCreate.adresse = formValue['adresse'];
+    toCreate.cp = formValue['cp'];
+    toCreate.loc = formValue['loc'];
+    toCreate.complAdr = formValue['complAdr'];
+    toCreate.dateNaiss = formValue['dateNaiss']
+    toCreate.admin = false;
+    toCreate.inscrit = new Date();
+    toCreate.supprime = null;
+    this.registerService.register(toCreate);
   }
 
   onReset() {
-    this.submitted = false;
     this.registerForm.reset();
+    this.submitted = false;
   }
 
   createPseudo(){
-    this.nomPseudo =
-    this.prenomPseudo =
     this.pseudoOk = this.registerForm.value['prenom'] + " " + this.registerForm.value['nom'];
     this.registerForm.patchValue({pseudo: this.pseudoOk});
   }
@@ -95,6 +114,7 @@ export class RegisterComponent implements OnInit {
       }
     }
   }
+
 
 
 }

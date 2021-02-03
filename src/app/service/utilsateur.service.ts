@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
 @Injectable()
-export class utilisateurService {
+export class UtilisateurService {
 
   utilisateurData: any;
   private utilisateur: Utilisateur;
@@ -11,7 +11,7 @@ export class utilisateurService {
 
   constructor(){}
 
-  emitUser(){
+  emitUtilisateur(){
     this.utilisateurSubject.next(this.utilisateur);
   }
 

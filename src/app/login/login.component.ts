@@ -1,6 +1,9 @@
+import { LoginService } from '../service/login.service';
+import { LoginInfo } from './../models/LoginInfo.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 
+@Injectable()
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,13 +13,19 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,
+              private loginService: LoginService
+              ) { }
 
   ngOnInit() {
+    this.initForm();
+  }
+
+  initForm() {
     this.loginForm = this.formBuilder.group({
       email: ['',[Validators.required,Validators.email]],
       password: ['',Validators.required]
-    })
+    });
   }
 
   get f() { return this.loginForm.controls; }
@@ -26,8 +35,11 @@ export class LoginComponent implements OnInit {
     if(this.loginForm.invalid){
       return;
     }
-
-    alert('OK \n\n' + JSON.stringify(this.loginForm.value, null, 4));
+    const formValue = this.loginForm.value;
+    let logInfo = new LoginInfo();
+    logInfo.email = formValue["email"];
+    logInfo.password = formValue["password"];
+    this.loginService.signIn(logInfo);
   }
 
   onReset(){

@@ -11,7 +11,7 @@
 }
 
 .space-at-end{
-padding-bottom: 10px;
+padding-bottom: 25%;
 }
 
 .footer-bg {
@@ -20,6 +20,12 @@ padding-bottom: 10px;
 
 .text-black {
   color: black;
+}
+
+.text-description{
+  padding: 5%;
+  font-size: larger;
+  font-weight:lighter
 }
 
 html {

@@ -7,9 +7,7 @@ export class Utilisateur{
   public password: string;
   public tel: string;
   public gsm: string;
-  public rue: string;
-  public num: string;
-  public boite: string;
+  public adresse: string;
   public cp: string;
   public loc: string;
   public complAdr: string;

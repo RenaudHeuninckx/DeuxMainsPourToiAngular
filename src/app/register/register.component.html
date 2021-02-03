@@ -39,6 +39,7 @@
         <input type="password" class="form-control" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
         <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
           <div *ngIf="f.password.errors.required">Mot de passe requis</div>
+          <div *ngIf="f.password.errors.minlength">Doit contenir au moins 8 caractères</div>
           <div *ngIf="f.password.errors.hasUpperCase">Doit contenir au moins une majuscule</div>
           <div *ngIf="f.password.errors.hasLowerCase">Doit contenir au moins une minuscule</div>
           <div *ngIf="f.password.errors.hasDigit">Doit contenir au moins un chiffre</div>
@@ -65,9 +66,9 @@
       </div>
       <div class="form-group col-12">
         <label>Adresse*</label>
-        <input type="text" class="form-control" formControlName="adresse" autocomplete="shipping street-address" [ngClass]="{ 'is-invalid': submitted && f.rue.errors }">
-        <div *ngIf="submitted && f.rue.errors" class="invalid-feedback">
-          <div *ngIf="f.rue.errors.required">Rue requise</div>
+        <input type="text" class="form-control" formControlName="adresse" autocomplete="shipping street-address" [ngClass]="{ 'is-invalid': submitted && f.adresse.errors }">
+        <div *ngIf="submitted && f.adresse.errors" class="invalid-feedback">
+          <div *ngIf="f.adresse.errors.required">Rue requise</div>
         </div>
       </div>
       <div class="form-group col-12 col-sm-3">
@@ -90,11 +91,11 @@
       </div>
       <div class="form-group">
         <label>Date de naissance</label>
-        <input type="date" class="form-control">
+        <input type="date" class="form-control" formControlName="dateNaiss">
       </div>
       <div class="form-group w-100"></div>
       <button type="submit" class="btn btn-primary">Soumettre</button>
-      <button type="reset" class="btn btn-secondary">Effacer</button>
+      <button type="reset" class="btn btn-secondary" (click)="onReset()">Effacer</button>
     </div>
   </form>
 </div>
