@@ -17,7 +17,7 @@ export class RegisterService {
     utilisateur.password = this.encDecr.set('ei2*$ZhxL*%cqb5',utilisateur.password);
     this.utilisateurApiService.addUtilisateur(utilisateur)
         .toPromise()
-        .then( () => this.router.navigate(['/home']) )
+        .then( () => this.router.navigate(['/login']) )
         .catch( (error) => alert(error.error));
   }
 

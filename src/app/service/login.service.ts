@@ -37,7 +37,7 @@ export class LoginService {
     signIn(loginInfo: LoginInfo) {
       let utilisateurProm: Utilisateur;
       loginInfo.password = this.encDecr.set('ei2*$ZhxL*%cqb5',loginInfo.password);
-      let myPromise = new Promise((resolve,rej) =>{
+      new Promise((resolve,rej) =>{
         this.utilisateurApiService.login(loginInfo).subscribe((data: Utilisateur)=>{
           utilisateurProm = data;
           if(utilisateurProm !== null && utilisateurProm.password === loginInfo.password){
@@ -48,6 +48,7 @@ export class LoginService {
             this.isAdmin = utilisateurProm.admin;
             this.emitAuthStatus();
           }else console.log("Problème d'identification");
+          resolve(utilisateurProm);
         })
       })
     }

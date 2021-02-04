@@ -1,4 +1,4 @@
-import { MassageDetailComponent } from './massageDetail/massageDetail.component';
+import { DetailMassageComponent } from './DetailMassage/DetailMassage.component';
 import { ProduitComponent } from './produit/produit.component';
 import { MassageComponent } from './massage/massage.component';
 import { RegisterComponent } from './register/register.component';
@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'massage', component: MassageComponent },
-  { path: 'massagedetail/:id', component: MassageDetailComponent },
+  { path: 'detailmassage/:id', component: DetailMassageComponent },
   { path: 'produit', component: ProduitComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent }

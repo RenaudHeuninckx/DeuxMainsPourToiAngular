@@ -1,5 +1,4 @@
 import { LoginInfo } from './../models/LoginInfo.model';
-import { InfoLogin } from './../models/InfoLogin';
 import { Utilisateur } from './../models/Utilisateur.model';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -26,13 +25,9 @@ export class UtilisateurApiService {
     return this.httpClient.post<Utilisateur>(this.apiURL + '/utilisateur', utilisateur, {responseType: 'type' as 'json'})
   }
 
-  login(loginInfo: LoginInfo): Observable<InfoLogin>{
-    console.log(loginInfo.email);
+  login(loginInfo: LoginInfo): Observable<Utilisateur>{
     let params = new HttpParams().set('email',loginInfo.email);
-    let headers = new HttpHeaders();
-    //params.append('email', loginInfo.email);
-    //headers.append('content-type', 'application/JSON');
-    return this.httpClient.get<InfoLogin>(this.apiURL + '/utilisateur/login', {params})
+    return this.httpClient.get<Utilisateur>(this.apiURL + '/utilisateur/login', {params})
   }
 
 }

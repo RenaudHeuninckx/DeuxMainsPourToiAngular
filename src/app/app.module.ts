@@ -1,7 +1,9 @@
+
 import { RegisterService } from './service/register.service';
 import { UtilisateurService } from './service/utilsateur.service';
 import { EncdDecrService } from './service/EncdDecr.service';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -16,9 +18,10 @@ import { LoginService } from './service/login.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MassageComponent } from './massage/massage.component';
 import { ProduitComponent } from './produit/produit.component';
+import { DetailMassageComponent } from './DetailMassage/DetailMassage.component';
 
 @NgModule({
-  declarations: [		
+  declarations: [
     AppComponent,
       MenuComponent,
       HomeComponent,
@@ -26,14 +29,17 @@ import { ProduitComponent } from './produit/produit.component';
       RegisterComponent,
       FooterComponent,
       MassageComponent,
-      ProduitComponent
+      ProduitComponent,
+      DetailMassageComponent
    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule,
+    BrowserModule
   ],
   providers: [
     LoginService,

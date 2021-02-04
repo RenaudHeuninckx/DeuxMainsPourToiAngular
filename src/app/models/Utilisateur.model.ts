@@ -13,6 +13,6 @@ export class Utilisateur{
   public complAdr: string;
   public dateNaiss: Date;
   public admin: boolean;
-  public inscrit: Date;
-  public supprime: Date;
+  public inscrit: string;
+  public supprime: string;
 }

@@ -1,3 +1,4 @@
+import { CommentMassageContainer } from './../models/commentMassageContainer';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -14,7 +15,7 @@ export class MassageApiService {
 constructor(private httpClient: HttpClient) { }
 
 getAllMassage(): Observable<MassageContainer>{
-  return this.httpClient.get<MassageContainer>(this.apiURL + '/massage');
+    return this.httpClient.get<MassageContainer>(this.apiURL + '/massage');
 }
 
 getOneMassage(id: number){
@@ -22,7 +23,7 @@ getOneMassage(id: number){
 }
 
 getMassageComment(id: number){
-  return this.httpClient
+  return this.httpClient.get<CommentMassageContainer>(this.apiURL + "/comment_massage/massage/" + id);
 }
 
 }
