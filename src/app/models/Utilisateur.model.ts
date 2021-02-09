@@ -11,7 +11,7 @@ export class Utilisateur{
   public cp: string;
   public loc: string;
   public complAdr: string;
-  public dateNaiss: Date;
+  public dateNaiss: string;
   public admin: boolean;
   public inscrit: string;
   public supprime: string;

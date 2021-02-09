@@ -3,6 +3,7 @@ import { Utilisateur } from './../models/Utilisateur.model';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { MustMatch } from '../service/mustMatch';
+import { formatDate } from '@angular/common';
 
 
 @Component({
@@ -11,9 +12,13 @@ import { MustMatch } from '../service/mustMatch';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+
   registerForm: FormGroup;
   submitted = false;
   pseudoOk: string;
+  currentDate: Date;
+  dateToAdd: string;
+  timeToAdd: string;
 
   constructor(private formBuilder: FormBuilder,
               private registerService: RegisterService) { }
@@ -62,9 +67,9 @@ export class RegisterComponent implements OnInit {
     toCreate.cp = formValue['cp'];
     toCreate.loc = formValue['loc'];
     toCreate.complAdr = formValue['complAdr'];
-    toCreate.dateNaiss = formValue['dateNaiss']
+    if ( formValue['dateNaiss'] !== '' ) toCreate.dateNaiss = formatDate(new Date(formValue['dateNaiss']),'yyyy-MM-dd','en');
     toCreate.admin = false;
-    toCreate.inscrit = new Date();
+    toCreate.inscrit = formatDate(new Date(),'yyyy-MM-dd','en');
     toCreate.supprime = null;
     this.registerService.register(toCreate);
   }

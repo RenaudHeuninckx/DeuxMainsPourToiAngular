@@ -18,7 +18,7 @@ v<div class="row">
             <div class="d-flex flex-column comment-section">
                 <div class="bg-white p-2" *ngFor="let comment of commentMassageList">
                     <div class="d-flex flex-row user-info">
-                        <div class="d-flex flex-column justify-content-start ml-2"><span class="d-block font-weight-bold name">{{comment.utilisateur.pseudo}}</span><span class="date text-black-50">{{comment.date}}</span></div>
+                        <div class="d-flex flex-column justify-content-start ml-2"><span class="d-block font-weight-bold name">{{comment.utilisateur.pseudo}}</span><span class="date text-black-50">{{comment.date | date: 'dd/MM/yyyy'}}</span></div>
                     </div>
                     <div class="mt-2">
                         <p class="comment-text">{{comment.description}}</p>

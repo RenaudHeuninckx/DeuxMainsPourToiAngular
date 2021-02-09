@@ -64,18 +64,9 @@ export class DetailMassageComponent implements OnInit {
     comment.massage = this.massage;
     comment.description = this.commentaire;
     comment.utilisateur = this.utilisateur;
-    this.getCurrentDate();
-    comment.date = this.dateToAdd;
+    comment.date = formatDate(new Date(),'yyyy-MM-dd','en');
     this.commentMassageApiService.addComment(comment).toPromise();
   }
-
-  getCurrentDate(){
-    this.currentDate = new Date()
-    let dateToday = new Date(this.currentDate.getUTCFullYear(),this.currentDate.getUTCMonth(),
-                    this.currentDate.getUTCDate()+1,this.currentDate.getUTCHours(),this.currentDate.getUTCMinutes(), this.currentDate.getSeconds())
-    this.dateToAdd = formatDate(dateToday,'yyyy-MM-dd','en')
-    this.timeToAdd = formatDate(dateToday,'HH:mm:ss','en')
-   }
 
   goBack() {
     this.location.back();
