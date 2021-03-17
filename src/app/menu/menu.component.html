@@ -28,7 +28,7 @@
           <a class="nav-link" routerLink="gestion">Gestion</a>
         </li>
         <li class="nav-item" *ngIf="isAuth">
-          <a class="nav-link" (click)="logOut()">Déconnection</a>
+          <a class="nav-link" (click)="logOut()" href="/home">Déconnection</a>
         </li>
       </ul>
     </div>
