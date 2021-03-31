@@ -1,3 +1,13 @@
-<p>
-  produit works!
-</p>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Nom</th>
+      <th scope="col">Prix</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let produit of listProduit" routerLink="/detailproduit/{{produit.id}}" >
+        <td>{{produit.type}}</td>
+        <td>{{produit.prix}} €</td>
+    </tr>
+</table>

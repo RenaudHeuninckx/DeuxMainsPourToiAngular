@@ -1,3 +1,4 @@
+import { DetailProduitComponent } from './DetailProduit/DetailProduit.component';
 import { DetailMassageComponent } from './DetailMassage/DetailMassage.component';
 import { ProduitComponent } from './produit/produit.component';
 import { MassageComponent } from './massage/massage.component';
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'massage', component: MassageComponent },
   { path: 'detailmassage/:id', component: DetailMassageComponent },
   { path: 'produit', component: ProduitComponent },
+  { path: 'detailproduit/:id', component: DetailProduitComponent},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent }
 ];

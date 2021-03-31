@@ -1,5 +1,6 @@
 <div>
   <h1>Connection</h1>
+  <p>Vous n'avez pas encore de compte ? <a routerLink="../register">Inscrivez-vous ici.</a></p>
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="form-group" >
       <label>Adresse email</label>
@@ -18,5 +19,4 @@
     </div>
     <button type="submit" class="btn btn-primary">Soumettre</button>
   </form>
-  <p>Vous n'avez pas encore de compte ? <a routerLink="../register">Inscrivez-vous ici.</a></p>
 </div>
