@@ -12,6 +12,10 @@ export class CommentProduitApiService {
   constructor(private httpClient: HttpClient) { }
 
   addComment(comment: CommentProduit): any{
-    return this.httpClient.post<CommentProduit>(this.apiURL + "/comment_produit", comment, {responseType: 'type' as 'json'});
+    return this.httpClient.post<CommentProduit>(this.apiURL + "/comment_produit", comment, {headers: {'Content-type': 'application/json'}});
+  }
+
+  delComment(id: number){
+    this.httpClient.delete(this.apiURL + "/comment_produit/" + id, {responseType: 'text'}).subscribe();
   }
 }

@@ -1,3 +1,4 @@
+import { Utilisateur } from './../models/Utilisateur.model';
 import { ProduitApiService } from './../service/produit.api.service';
 import { Component, OnInit } from '@angular/core';
 import { Produit } from '../models/Produit.model';
@@ -11,6 +12,8 @@ export class ProduitComponent implements OnInit {
 
   listProduit: Produit[];
   countProduit: number;
+  utilisateur: Utilisateur;
+  isAdmin: boolean = false;
 
   constructor(
     public produitApiService: ProduitApiService
@@ -23,6 +26,15 @@ export class ProduitComponent implements OnInit {
         this.countProduit = data.count;
       }
     )
+    if (sessionStorage.utlisateur !== null){
+      this.utilisateur = JSON.parse(sessionStorage.getItem("utilisateur"));
+      this.isAdmin = this.utilisateur.admin;
+    }
+  }
+
+  supprimerProduit(id: number){
+    this.produitApiService.deleteProduit(id);
+    location.reload();
   }
 
 }

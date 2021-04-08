@@ -1,0 +1,39 @@
+<div>
+  <h1>Modification massage</h1>
+  <form [formGroup]="massageForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>Nom</label>
+      <input type="text" class="form-control" formControlName="nom" [(ngModel)]="massage.nom" [ngClass]="{ 'is-invalid': submitted && f.nom.errors }">
+      <div *ngIf="submitted && f.nom.invalid" class="invalid-feedback">
+        <div *ngIf="f.nom.errors.required">Nom requis</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Type</label>
+      <input type="text" class="form-control" formControlName="type" [(ngModel)]="massage.type" [ngClass]="">
+    </div>
+    <div class="form-group">
+      <label>Durée</label>
+      <input type="text" class="form-control" formControlName="duree" [(ngModel)]="massage.duree" [ngClass]="{ 'is-invalid': submitted && f.duree.errors }">
+      <div *ngIf="submitted && f.duree.invalid" class="invalid-feedback">
+        <div *ngIf="f.duree.errors.required">Durée requise</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Prix</label>
+      <input type="number" class="form-control" formControlName="prix" [(ngModel)]="massage.prix" [ngClass]="{ 'is-invalid': submitted && f.prix.errors }">
+      <div *ngIf="submitted && f.prix.invalid" class="invalid-feedback">
+        <div *ngIf="f.prix.errors.required">Prix requis</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Description</label>
+      <textarea type="text" class="form-control" formControlName="description" rows="5" [(ngModel)]="massage.description" [ngClass]="{ 'is-invalid': submitted && f.description.errors }"></textarea>
+      <div *ngIf="submitted && f.description.invalid" class="invalid-feedback">
+        <div *ngIf="f.description.errors.required">Decription requise</div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-success">Soumettre</button>
+    <button type="button" class="btn btn-primary" (click)="goBack()">Retour</button>
+  </form>
+</div>

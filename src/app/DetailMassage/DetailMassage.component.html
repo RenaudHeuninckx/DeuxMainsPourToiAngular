@@ -23,11 +23,19 @@
                     <div class="mt-2">
                         <p class="comment-text">{{comment.description}}</p>
                     </div>
+                    <div *ngIf="comment.utilisateur.id == utilisateur.id">
+                      <button class="btn btn-primary btn-sm shadow-none" type="button" (click)="deleteComment(comment.id)">supprimé mon commentaire</button>
+                    </div>
                 </div>
 
                 <div class="bg-light p-2" *ngIf="isAuth">
-                    <div class="d-flex flex-row align-items-start"><textarea name="commentaire" [(ngModel)]="commentaire" class="form-control ml-1 shadow-none textarea"></textarea></div>
-                    <div class="mt-2 text-right"><button class="btn btn-primary btn-sm shadow-none" type="button" (click)="postComment()">Post comment</button><button class="btn btn-outline-primary btn-sm ml-1 shadow-none" type="button">Cancel</button></div>
+                    <div class="d-flex flex-row align-items-start">
+                      <textarea name="commentaire" [(ngModel)]="commentaire" class="form-control ml-1 shadow-none textarea"></textarea>
+                    </div>
+                    <div class="mt-2 text-right">
+                      <button class="btn btn-outline-primary btn-sm ml-1 shadow-none" type="button" [disabled]="commentaire === ''" (click)="deleteContent()">Effacer contenu</button>
+                      <button class="btn btn-primary btn-sm shadow-none" type="button" [disabled]="commentaire === ''" (click)="postComment()">Poster commentaire</button>
+                    </div>
                 </div>
                 <div class="bg-light p-2" *ngIf="!isAuth">
                   <a routerLink="../../login">Connectez vous pour commenter</a>

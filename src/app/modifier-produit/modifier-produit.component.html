@@ -1,0 +1,24 @@
+<div>
+  <h1>Modification massage</h1>
+  <form [formGroup]="produitForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>Nom</label>
+      <input type="text" class="form-control" formControlName="type" [(ngModel)]="produit.type" [ngClass]="{ 'is-invalid': submitted && f.type.errors }">
+      <div *ngIf="submitted && f.type.invalid" class="invalid-feedback">
+        <div *ngIf="f.type.errors.required">Nom requis</div>
+      </div>
+      <label>prix</label>
+      <input type="number" class="form-control" formControlName="prix" [(ngModel)]="produit.prix" [ngClass]="{ 'is-invalid': submitted && f.prix.errors }">
+      <div *ngIf="submitted && f.prix.invalid" class="invalid-feedback">
+        <div *ngIf="f.prix.errors.required">Prix requis</div>
+      </div>
+      <label>Description</label>
+      <textarea type="text" class="form-control" formControlName="description" rows="5" [(ngModel)]="produit.description" [ngClass]="{ 'is-invalid': submitted && f.description.errors }"></textarea>
+      <div *ngIf="submitted && f.description.invalid" class="invalid-feedback">
+        <div *ngIf="f.description.errors.required">Decription requise</div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-success">Soumettre</button>
+    <button type="button" class="btn btn-primary" (click)="goBack()">Retour</button>
+  </form>
+</div>

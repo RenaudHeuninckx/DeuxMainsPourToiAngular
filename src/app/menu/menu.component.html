@@ -4,7 +4,7 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse row justify-content-between" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" routerLink="home"><i class="bi bi-house-door-fill"></i></a>
@@ -31,6 +31,7 @@
           <a class="nav-link" (click)="logOut()">Déconnection</a>
         </li>
       </ul>
+      <span class="nav-item">{{pseudo}}</span>
     </div>
   </div>
 </nav>

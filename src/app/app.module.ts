@@ -20,9 +20,11 @@ import { MassageComponent } from './massage/massage.component';
 import { ProduitComponent } from './produit/produit.component';
 import { DetailMassageComponent } from './DetailMassage/DetailMassage.component';
 import { DetailProduitComponent } from './DetailProduit/DetailProduit.component';
+import { ModifierMassageComponent } from './modifier-massage/modifier-massage.component';
+import { ModifierProduitComponent } from './modifier-produit/modifier-produit.component';
 
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
       MenuComponent,
       HomeComponent,
@@ -32,7 +34,9 @@ import { DetailProduitComponent } from './DetailProduit/DetailProduit.component'
       MassageComponent,
       ProduitComponent,
       DetailMassageComponent,
-      DetailProduitComponent
+      DetailProduitComponent,
+      ModifierMassageComponent,
+      ModifierProduitComponent
    ],
   imports: [
     BrowserModule,

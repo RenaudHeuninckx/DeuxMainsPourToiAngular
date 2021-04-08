@@ -22,7 +22,7 @@ export class UtilisateurApiService {
   }
 
   addUtilisateur(utilisateur: Utilisateur): any {
-    return this.httpClient.post<Utilisateur>(this.apiURL + '/utilisateur', utilisateur, {responseType: 'type' as 'json'})
+    return this.httpClient.post(this.apiURL + '/utilisateur', utilisateur, {responseType: 'text'})
   }
 
   login(loginInfo: LoginInfo): Observable<Utilisateur>{

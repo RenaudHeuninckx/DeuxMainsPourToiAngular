@@ -1,3 +1,5 @@
+import { ModifierProduitComponent } from './modifier-produit/modifier-produit.component';
+import { ModifierMassageComponent } from './modifier-massage/modifier-massage.component';
 import { DetailProduitComponent } from './DetailProduit/DetailProduit.component';
 import { DetailMassageComponent } from './DetailMassage/DetailMassage.component';
 import { ProduitComponent } from './produit/produit.component';
@@ -16,7 +18,9 @@ const routes: Routes = [
   { path: 'produit', component: ProduitComponent },
   { path: 'detailproduit/:id', component: DetailProduitComponent},
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent }
+  { path: 'register', component: RegisterComponent },
+  { path: 'modifiermassage/:id', component: ModifierMassageComponent},
+  { path: 'modifierproduit/:id', component: ModifierProduitComponent}
 ];
 
 @NgModule({

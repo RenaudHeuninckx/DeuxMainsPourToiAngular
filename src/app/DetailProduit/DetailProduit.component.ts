@@ -24,7 +24,7 @@ export class DetailProduitComponent implements OnInit {
   isAuthSubscription: Subscription;
   utilisateur: Utilisateur;
   utilisateurSubscription: Subscription;
-  commentaire: string;
+  commentaire: string = '';
   id: number;
   currentDate: Date;
   dateToAdd: string;
@@ -35,16 +35,20 @@ export class DetailProduitComponent implements OnInit {
     private route: ActivatedRoute,
     private produitApiService: ProduitApiService,
     private location: Location,
-    private utilisateurService: UtilisateurService,
     private commentProduitApiService: CommentProduitApiService
   ) { }
 
   ngOnInit() {
-    this.isAuthSubscription = this.loginService.authSubject.subscribe(
-      (isAuth: boolean) => {this.isAuth = isAuth});
-    this.utilisateurSubscription = this.utilisateurService.utilisateurSubject.subscribe(
-      (utilisateur: Utilisateur) => {this.utilisateur = utilisateur});
-    this.utilisateurService.emitUtilisateur();
+    if (sessionStorage.getItem("utilisateur") !== null){
+      this.utilisateur = JSON.parse(sessionStorage.utilisateur);
+      this.isAuth = true;
+    }else{
+      this.isAuthSubscription = this.loginService.authSubject.subscribe(
+        (isAuth: boolean) =>{
+          this.isAuth = isAuth;
+        }
+      )
+    }
     this.loginService.emitAuthStatus();
     this.id = Number(this.route.snapshot.paramMap.get('id'));
     this.getProduit(this.id);
@@ -66,6 +70,16 @@ export class DetailProduitComponent implements OnInit {
     comment.utilisateur = this.utilisateur;
     comment.date = formatDate(new Date(),'yyyy-MM-dd','en');
     this.commentProduitApiService.addComment(comment).toPromise();
+    location.reload();
+  }
+
+  deleteContent(){
+    this.commentaire = '';
+  }
+
+  deleteComment(id: number){
+    this.commentProduitApiService.delComment(id);
+    location.reload();
   }
 
   goBack(){

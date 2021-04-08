@@ -1,17 +1,56 @@
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">Nom</th>
-      <th scope="col">Type</th>
-      <th scope="col">Durée</th>
-      <th scope="col">Prix</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let massage of listMassage" routerLink="/detailmassage/{{massage.id}}" >
-        <td>{{massage.nom}}</td>
-        <td>{{massage.type}}</td>
-        <td>{{massage.duree}}</td>
-        <td>{{massage.prix}} €</td>
-    </tr>
-</table>
+<div *ngIf="!isAdmin">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Nom</th>
+        <th scope="col">Type</th>
+        <th scope="col">Durée</th>
+        <th scope="col">Prix</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let massage of listMassage" routerLink="/detailmassage/{{massage.id}}" >
+          <td>{{massage.nom}}</td>
+          <td>{{massage.type}}</td>
+          <td>{{massage.duree}}</td>
+          <td>{{massage.prix}} €</td>
+      </tr>
+  </table>
+</div>
+<div *ngIf="isAdmin">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Nom</th>
+        <th scope="col">Type</th>
+        <th scope="col">Durée</th>
+        <th scope="col">Prix</th>
+        <th scope="col">Description</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let massage of listMassage">
+          <td>{{massage.nom}}</td>
+          <td style="width:85px;">{{massage.type}}</td>
+          <td>{{massage.duree}}</td>
+          <td style="width:80px;">{{massage.prix}} €</td>
+          <td>{{massage.description}}</td>
+          <td>
+            <button class="btn btn-primary btn-sm" type="button" [routerLink]="['/detailmassage/' + massage.id]" style="width:85px;">Afficher</button>
+            <button class="btn btn-success btn-sm" type="button" [routerLink]="['/modifiermassage/' + massage.id]" style="width:85px;">Modifier</button>
+            <button class="btn btn-danger btn-sm" type="button" (click)="supprimerMassage(massage.id)" style="width:85px;">Supprimer</button>
+          </td>
+          <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><button class="btn btn-success" type="button" [routerLink]="['/modifiermassage/0']" style="width:85px;">Ajouter</button></td>
+      </tr>
+  </table>
+</div>
+
