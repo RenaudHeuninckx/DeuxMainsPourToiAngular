@@ -26,7 +26,7 @@ export class ProduitComponent implements OnInit {
         this.countProduit = data.count;
       }
     )
-    if (sessionStorage.utlisateur !== null){
+    if (sessionStorage.getItem("utlisateur") !== null){
       this.utilisateur = JSON.parse(sessionStorage.getItem("utilisateur"));
       this.isAdmin = this.utilisateur.admin;
     }

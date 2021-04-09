@@ -76,7 +76,6 @@ export class LoginService {
       sessionStorage.removeItem('utilisateur');
       this.router.navigate(['/home']);
       this.emitAuthStatus();
-      location.reload;
     }
 
 }

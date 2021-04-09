@@ -17,12 +17,12 @@ import { error } from '@angular/compiler/src/util';
 })
 export class DetailMassageComponent implements OnInit {
 
-  massage: Massage;
+  massage: Massage = new Massage;
   commentMassageList: CommentMassage[];
   commentMassageCount: number;
   isAuth: boolean;
   isAuthSubscription: Subscription;
-  utilisateur: Utilisateur;
+  utilisateur: Utilisateur =new Utilisateur;
   utilisateurSubscription: Subscription;
   commentaire: string = '';
   id: number;
@@ -47,7 +47,7 @@ export class DetailMassageComponent implements OnInit {
         (isAuth: boolean) =>{
           this.isAuth = isAuth;
         }
-      )
+      );
     }
     this.loginService.emitAuthStatus();
     this.id = Number(this.route.snapshot.paramMap.get('id'));

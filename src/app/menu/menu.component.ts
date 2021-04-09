@@ -53,6 +53,7 @@ export class MenuComponent implements OnInit {
   logOut(){
     this.loginService.signOut();
     this.router.navigate(['/home']);
+    location.reload;
   }
 
 }

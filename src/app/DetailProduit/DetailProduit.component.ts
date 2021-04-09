@@ -17,12 +17,12 @@ import { formatDate, Location } from '@angular/common';
 })
 export class DetailProduitComponent implements OnInit {
 
-  produit: Produit;
+  produit: Produit = new Produit;
   commentProduitList: CommentProduit[];
   commentProduitCount: number;
   isAuth: boolean;
   isAuthSubscription: Subscription;
-  utilisateur: Utilisateur;
+  utilisateur: Utilisateur = new Utilisateur;
   utilisateurSubscription: Subscription;
   commentaire: string = '';
   id: number;
