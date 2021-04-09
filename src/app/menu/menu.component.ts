@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../service/login.service';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -12,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class MenuComponent implements OnInit {
 
-  isAuth: boolean;
+  isAuth = false;
   isAuthSubscription: Subscription;
   isAdmin: boolean;
   isAdminSubscription: Subscription;
